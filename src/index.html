@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Electronic Store</title>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+	<script src="https://kit.fontawesome.com/bdbf51ea8e.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="./style.css">
+
+
+</head>
+
+<body>
+
+	<div class="container text-center">
+		<h1 class="bg-light py-4 text-info"><i class="fas fa-plug"></i>Electronic Store</h1>
+	</div>
+
+	<div class="d-flex justify-content-center">
+		<form class="w-50" action="">
+			<input type="text" id="userid" class="form-control" placeholder="ID" readonly autocomplete="off">
+			<input type="text" id="proname" class="form-control" placeholder="Product Name" autocomplete="off">
+			<div class="row">
+				<div class="col">
+					<input type="text" id="seller" class="form-control m-0" placeholder="Seller" autocomplete="off">
+				</div>
+
+				<div class="col">
+					<input type="text" id="price" class="form-control m-0" placeholder="Price" autocomplete="off">
+				</div>
+			</div>
+		</form>
+
+	</div>
+
+	<!-- create, update, read and delete button -->
+
+	<div class="d-flex justify-content-center">
+		<button class="btn btn-success" id="btn-create">Create</button>
+		<button class="btn btn-primary" id="btn-read">Read</button>
+		<button class="btn btn-warning" id="btn-update">Update</button>
+		<button class="btn btn-danger" id="btn-delete">Delete All</button>
+	</div>
+
+	<div class="container d-flex">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th scope="col">ID</th>
+					<th scope="col">Product Name</th>
+					<th scope="col">Seller</th>
+					<th scope="col">Price</th>
+					<th scope="col">Edit</th>
+					<th scope="col">Delete</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th scope="row">1</th>
+					<td>Mark</td>
+					<td>Otto</td>
+					<td>@mdo</td>
+					<td><i class="fas fa-edit btnedit"></i></td>
+					<td><i class="fas fa-trash-alt btndelete"></i></td>
+				</tr>
+				<tr>
+					<th scope="row">2</th>
+					<td>Jacob</td>
+					<td>Thornton</td>
+					<td>@fat</td>
+					<td><i class="fas fa-edit btnedit"></i></td>
+					<td><i class="fas fa-trash-alt btndelete"></i></td>
+				</tr>
+				<tr>
+					<th scope="row">3</th>
+					<td>Larry</td>
+					<td>the Bird</td>
+					<td>@twitter</td>
+					<td><i class="fas fa-edit btnedit"></i></td>
+					<td><i class="fas fa-trash-alt btndelete"></i></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+		crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+		crossorigin="anonymous"></script>
+
+	<!-- dexie API -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/dexie/2.0.4/dexie.min.js"
+		integrity="sha256-ubffRsoh9QK5xJC/u3s3drtGFBZUHBm9bHFRzYvtkJI=" crossorigin="anonymous"></script>
+
+
+	<!-- custom javascript main.js -->
+	<script src="../js/main.js" type="module"></script>
+
+</body>
+
+</html>
