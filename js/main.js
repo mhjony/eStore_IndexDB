@@ -1,5 +1,7 @@
 import productdb, {
-    bulkcreate
+    bulkcreate,
+    getData,
+    createEle
 } from './module.js';
 
 let db = productdb("Productdb", {
@@ -32,35 +34,18 @@ btncreate.onclick = (event) => {
     //console.log(flag);
 
     proname.value = seller.value = price.value = "";
-    getData();
+    getData(db.products, (data) => {
+        userid.value = data.id + 1 || 1;
+    });
 }
 
-const getData = () => {
-    let index = 0;
-    let obj = {};
 
-    db.products.count((count) => {
-        if (count) {
-            db.products.each(table => {
-                console.log(table);
+// create event on btnread button
+btnread.onclick = table;
 
-                obj = Sortobj(table);
-                console.log(obj);
-            })
-        }
+function table() {
+    const tbody = document.getElementById("tbody");
+    getData(db.products, (data) => {
+        console.log(data);
     })
 }
-
-const Sortobj = sortobj => {
-    let obj = {};
-    obj = {
-        id: sortobj.id,
-        name: sortobj.name,
-        seller: sortobj.seller,
-        price: sortobj.price
-    }
-
-    return obj;
-}
-
-
