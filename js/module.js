@@ -36,4 +36,7 @@ const empty = object => {
 }
 
 export default productdb;
+export {
+    bulkcreate
+}
 
