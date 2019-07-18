@@ -45,7 +45,29 @@ btnread.onclick = table;
 
 function table() {
     const tbody = document.getElementById("tbody");
+
+    while (tbody.hasChildNodes()) {
+        tbody.removeChild(tbody.firstChild);
+    }
     getData(db.products, (data) => {
-        console.log(data);
+        if (data) {
+            createEle("tr", tbody, tr => {
+                for (const value in data) {
+                    createEle("td", tr, td => {
+                        td.textContent = data.price === data[value] ? `€${data[value]}` : data[value];
+                    })
+                }
+                createEle("td", tr, td => {
+                    createEle("i", td, i => {
+                        i.className += "fas fa-edit btnedit"
+                    })
+                })
+                createEle("td", tr, td => {
+                    createEle("i", td, i => {
+                        i.className += "fas fa-trash btndelete"
+                    })
+                })
+            })
+        }
     })
 }
