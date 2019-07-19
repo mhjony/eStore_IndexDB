@@ -43,6 +43,23 @@ btncreate.onclick = (event) => {
 // create event on btnread button
 btnread.onclick = table;
 
+
+// update event
+btnupdate.onclick = () => {
+    const id = parseInt(userid.value || 0);
+
+    if (id) {
+        db.products.update(id, {
+            name: proname.value,
+            seller: seller.value,
+            price: price.value
+        }).then((updated) => {
+            let get = updated ? `data updated` : `Couldn't update data`;
+            console.log(get);
+        })
+    }
+}
+
 function table() {
     const tbody = document.getElementById("tbody");
 
@@ -59,7 +76,9 @@ function table() {
                 }
                 createEle("td", tr, td => {
                     createEle("i", td, i => {
-                        i.className += "fas fa-edit btnedit"
+                        i.className += "fas fa-edit btnedit";
+                        i.setAttribute(`data-id`, data.id);
+                        i.onclick = editbtn;
                     })
                 })
                 createEle("td", tr, td => {
@@ -69,5 +88,17 @@ function table() {
                 })
             })
         }
+    })
+}
+
+function editbtn(event) {
+
+    let id = parseInt(event.target.dataset.id);
+
+    db.products.get(id, data => {
+        userid.value = data.id || 0;
+        proname.value = data.name || "";
+        seller.value = data.seller || "";
+        price.value = data.price || "";
     })
 }
