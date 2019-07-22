@@ -23,6 +23,9 @@ const btnread = document.getElementById("btn-read");
 const btnupdate = document.getElementById("btn-update");
 const btndelete = document.getElementById("btn-delete");
 
+//not found
+const notfound = document.getElementById("notfound");
+
 //insert value using create button
 btncreate.onclick = (event) => {
     let flag = bulkcreate(db.products, {
@@ -60,6 +63,29 @@ btnupdate.onclick = () => {
     }
 }
 
+
+// delete all records
+btndelete.onclick = () => {
+    db.delete();
+    db = productdb("Productdb", {
+        products: `++id, name, seller, price`
+    });
+    db.open();
+    table();
+}
+
+
+// window onload event
+window.onload = () => {
+    textID(userid);
+}
+
+function textID(textboxid) {
+    getData(db.products, data => {
+        textboxid.value = data.id + 1 || 1;
+    })
+}
+
 function table() {
     const tbody = document.getElementById("tbody");
 
@@ -83,12 +109,17 @@ function table() {
                 })
                 createEle("td", tr, td => {
                     createEle("i", td, i => {
-                        i.className += "fas fa-trash btndelete"
+                        i.className += "fas fa-trash btndelete";
+                        i.setAttribute(`data-id`, data.id);
+                        i.onclick = deletebtn;
                     })
                 })
             })
         }
-    })
+        else {
+            notfound.textContent = "No record found in the database...!";
+        }
+    });
 }
 
 function editbtn(event) {
@@ -101,4 +132,11 @@ function editbtn(event) {
         seller.value = data.seller || "";
         price.value = data.price || "";
     })
+}
+
+
+function deletebtn(event) {
+    let id = parseInt(event.target.dataset.id);
+    db.products.delete(id);
+    table();
 }
